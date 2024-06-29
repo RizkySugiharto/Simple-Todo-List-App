@@ -5,7 +5,7 @@ module.exports = defineConfig({
     devServer: {
       proxy: {
         '/api': {
-          target: process.env.BACKEND_URI || "localhost:3000"
+          target: process.env.BACKEND_URI || 'http://localhost:3000'
         }
       }
     }
