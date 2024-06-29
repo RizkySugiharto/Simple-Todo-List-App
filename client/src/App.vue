@@ -43,8 +43,6 @@ export default {
 
     this.todos = response.data
     console.log(this.todos)
-
-    console.log(process.env)
   },
   methods: {
     async addTodo(e) {
