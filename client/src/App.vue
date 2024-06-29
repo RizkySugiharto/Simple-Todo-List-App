@@ -37,7 +37,7 @@ export default {
     }
   },
   async mounted() {
-    const response = await axios.get('api/todoList')
+    const response = await axios.get(`${process.env.BACKEND_URI}/api/todoList`)
     console.log(response.data)
 
     this.todos = response.data
@@ -47,7 +47,7 @@ export default {
     async addTodo(e) {
       e.preventDefault()
 
-      const response = await axios.post('/api/todoList', {
+      const response = await axios.post(`${process.env.BACKEND_URI}/api/todoList`, {
         title: this.title,
         description: this.description
       })
@@ -59,7 +59,7 @@ export default {
       this.description = ""
     },
     async removeTodo(item, i) {
-      await axios.delete(`api/todoList/${item._id}`)
+      await axios.delete(`${process.env.BACKEND_URI}/api/todoList/${item._id}`)
       this.todos.splice(i, 1)
     }
   }
