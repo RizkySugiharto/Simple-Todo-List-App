@@ -39,10 +39,7 @@ export default {
   },
   async mounted() {
     const response = await axios.get(`/api/todoList`, { baseURL: BACKEND_URI })
-    console.log(response.data)
-
     this.todos = response.data
-    console.log(this.todos)
   },
   methods: {
     async addTodo(e) {
@@ -52,8 +49,6 @@ export default {
         title: this.title,
         description: this.description
       }, { baseURL: BACKEND_URI })
-
-      console.log(response.data)
 
       this.todos.push(response.data)
       this.title = ""
