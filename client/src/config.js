@@ -1,3 +1,7 @@
-const BACKEND_URI = process.env.BACKEND_URI || "http://localhost:3000"
+const BACKEND_URI = 
+    process.env.BACKEND_URI ||
+    process.env.VUE_APP_BACKEND_URI ||
+    process.env.VITE_APP_BACKEND_URI ||
+    "http://localhost:3000"
 
 module.exports.BACKEND_URI = BACKEND_URI
