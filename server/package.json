@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start:server": "nodemon app.js --ignore '../client/'",
     "start:client": "npm run server --prefix '../client/'",
