@@ -1,6 +1,6 @@
-const { Schema, model } = require('mongoose')
+const mongoose = require('mongoose')
 
-const TodoSchema = new Schema({
+const TodoSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -11,6 +11,11 @@ const TodoSchema = new Schema({
     }
 })
 
-const Todo = model('todo', TodoSchema)
+mongoose
+    .connect(process.env.MONGO_URI)
+    .then(() => console.log('MongoDB database connected..'))
+    .catch((err) => console.log(err))
+
+const Todo = mongoose.model('todo', TodoSchema)
 
 module.exports = Todo
