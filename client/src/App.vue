@@ -27,6 +27,7 @@
 
 <script>
 import axios from 'axios';
+import { BACKEND_URI } from './config'
 
 export default {
   data() {
@@ -37,7 +38,7 @@ export default {
     }
   },
   async mounted() {
-    const response = await axios.get(`${process.env.BACKEND_URI}/api/todoList`)
+    const response = await axios.get(`/api/todoList`, { baseURL: BACKEND_URI })
     console.log(response.data)
 
     this.todos = response.data
@@ -47,10 +48,10 @@ export default {
     async addTodo(e) {
       e.preventDefault()
 
-      const response = await axios.post(`${process.env.BACKEND_URI}/api/todoList`, {
+      const response = await axios.post(`/api/todoList`, {
         title: this.title,
         description: this.description
-      })
+      }, { baseURL: BACKEND_URI })
 
       console.log(response.data)
 
@@ -59,7 +60,7 @@ export default {
       this.description = ""
     },
     async removeTodo(item, i) {
-      await axios.delete(`${process.env.BACKEND_URI}/api/todoList/${item._id}`)
+      await axios.delete(`/api/todoList/${item._id}`, { baseURL: BACKEND_URI })
       this.todos.splice(i, 1)
     }
   }
